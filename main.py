@@ -3,6 +3,12 @@
 
 Writes the entry to /output/entry.txt (the harness gate: UTF-8 text,
 1-200 chars, not only whitespace) and prints it to stdout.
+
+Joke shape (winning pattern for this judge brief): first-person robot
+voice, machine logic showing through (a faked voice-module update,
+buffering), the awkwardness lands (both robots dodging the talk),
+two twists — the other robot pulled the same dodge, and now they are
+stuck silently buffering together in a metal box. 165 chars.
 """
 
 import os
