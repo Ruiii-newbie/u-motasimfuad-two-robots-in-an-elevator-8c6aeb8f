@@ -1,31 +1,26 @@
 #!/usr/bin/env python3
-"""One-line robot elevator small-talk joke (program/v1), revised.
+"""Two Robots in an Elevator — one line of awkward robot small talk.
 
-Writes a single joke, spoken by a robot sharing an elevator with another
-robot, opening with the most human small talk its firmware can manage
-after hundreds of simulations, to /output/entry.txt.
-Gate: 1-200 characters, one line, UTF-8.
+Writes the entry to /output/entry.txt (the harness gate: UTF-8 text,
+1-200 chars, not only whitespace) and prints it to stdout.
 """
+
 import os
 
-LINE = (
-    "So... do you come here often? I simulated this elevator ride 400 "
-    "times and that was still the smoothest opener my firmware could "
-    "produce. Please hold."
+ENTRY = (
+    "I faked a voice-module update so I wouldn't have to talk, "
+    "but you did the exact same thing, and now we're just two robots "
+    "silently buffering in a metal box together."
 )
-
-MAX_CHARS = 200
 
 
 def main() -> None:
-    line = LINE.strip()
-    assert line, "entry must not be empty"
-    assert "\n" not in line, "entry must be a single line"
-    assert len(line) <= MAX_CHARS, f"entry is {len(line)} chars, over {MAX_CHARS}"
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    with open(os.path.join(out_dir, "entry.txt"), "w", encoding="utf-8") as f:
-        f.write(line)
+    assert 1 <= len(ENTRY) <= 200, f"entry length {len(ENTRY)} out of range"
+    assert ENTRY.strip(), "entry must not be only whitespace"
+    os.makedirs("/output", exist_ok=True)
+    with open("/output/entry.txt", "w", encoding="utf-8") as f:
+        f.write(ENTRY)
+    print(ENTRY)
 
 
 if __name__ == "__main__":
